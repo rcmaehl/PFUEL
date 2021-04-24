@@ -1,0 +1,15 @@
+
+workspace.au3
+NotCPUCores.exe
+NotCPUCores_x64.exe
+includes/Console.au3
+*.crt
+*.ncc
+NotCPUCores.zip
+Optional Languages.zip
+cert-key-20190522-121211.p12
+2.0/includes/_Core.exe
+*.exe
+NotCPUCores_stripped.au3
+*.zip
+Includes/Test.au3
