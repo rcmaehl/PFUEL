@@ -693,16 +693,16 @@ Func Main()
 EndFunc
 
 Func _ArrayRemove(ByRef $aArray, $sRemString)
-	$sTemp = "," & _ArrayToString($aArray, ",") & ","
-	$sTemp = StringReplace($sTemp, "," & $sRemString & ",", ",")
-	$sTemp = StringReplace($sTemp, ",,", ",")
-	If StringLeft($sTemp, 1) = "," Then $sTemp = StringTrimLeft($sTemp, 1)
-	If StringRight($sTemp, 1) = "," Then $sTemp = StringTrimRight($sTemp, 1)
-	If $sTemp = "" Or $sTemp = "," Then
-		$aArray = StringSplit($sTemp, ",", $STR_NOCOUNT)
+	$sTemp = "*" & _ArrayToString($aArray, "*") & "*"
+	$sTemp = StringReplace($sTemp, "*" & $sRemString & "*", "*")
+	$sTemp = StringReplace($sTemp, "**", "*")
+	If StringLeft($sTemp, 1) = "*" Then $sTemp = StringTrimLeft($sTemp, 1)
+	If StringRight($sTemp, 1) = "*" Then $sTemp = StringTrimRight($sTemp, 1)
+	If $sTemp = "" Or $sTemp = "*" Then
+		$aArray = StringSplit($sTemp, "*", $STR_NOCOUNT)
 		_ArrayDelete($aArray, 0)
 	Else
-		$aArray = StringSplit($sTemp, ",", $STR_NOCOUNT)
+		$aArray = StringSplit($sTemp, "*", $STR_NOCOUNT)
 	EndIf
 EndFunc
 
