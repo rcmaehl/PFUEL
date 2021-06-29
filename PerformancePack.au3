@@ -23,6 +23,8 @@
 #AutoIt3Wrapper_Res_File_Add=assets\Minimize_Alt.png, RT_RCDATA, MINIMIZE_ALT, 0
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
+FileChangeDir(@SystemDir)
+
 #include <GDIPlus.au3>
 
 #include "includes\ResourcesEx.au3"
@@ -56,5 +58,15 @@ Func Main()
 		$hMINIMIZE[0] = _Resource_GetAsImage("MINIMIZE", $RT_RCDATA)
 		$hMINIMIZE[1] = _Resource_GetAsImage("MINIMIZE_ALT", $RT_RCDATA)
 	EndIf
+
+	$hCTRL_GUI = GUICreate("", 800, 600, 0, 0, $WS_POPUP, BitOR($WS_EX_LAYERED, $WS_EX_MDICHILD), $hGUI)
+
+	_WinAPI_SetLayeredWindowAttributes($hCTRL_GUI, 0x121314)
+
+	$ZEROGraphic = _GDIPlus_GraphicsCreateFromHWND($hCTRL_GUI)
+
+	$hDISPLAY = _GDIPlus_GraphicsDrawImageRectRect($ZEROGraphic, $hGUI, 0, 0, 450, 750, 0, 0, 450, 750)
+
+	GUISetState($GUI_SHOW, $hCTRL_GUI)
 
 EndFunc
